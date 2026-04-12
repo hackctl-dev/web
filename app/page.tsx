@@ -6,11 +6,18 @@ import { useState } from "react";
 
 const BOLD_GRADIENT = "bg-gradient-to-br from-emerald-400 to-teal-500 bg-clip-text text-transparent";
 
+type UmamiWindow = Window & {
+  umami?: {
+    track: (eventName: string) => void;
+  };
+};
+
 export default function Home() {
   const [copiedOs, setCopiedOs] = useState<string | null>(null);
 
-  const copyToClipboard = (text: string, id: string) => {
+  const copyToClipboard = (text: string, id: string, eventName: string) => {
     navigator.clipboard.writeText(text);
+    (window as UmamiWindow).umami?.track(eventName);
     setCopiedOs(id);
     setTimeout(() => setCopiedOs(null), 2000);
   };
@@ -108,9 +115,8 @@ export default function Home() {
                   >
                     <span className="text-[11px] uppercase tracking-wider text-zinc-500 font-semibold px-1">Windows</span>
                     <div 
-                      onClick={() => copyToClipboard("irm https://hackctl.dev/install.ps1 | iex", 'win')}
+                      onClick={() => copyToClipboard("irm https://hackctl.dev/install.ps1 | iex", 'win', 'Windows Download Click')}
                       className="w-full bg-[#27272a] border border-zinc-700/50 rounded-lg p-3 flex items-center justify-between cursor-pointer group/code hover:bg-zinc-800 transition-colors"
-                      data-umami-event="Windows Download Click"
                     >
                       <code className="font-mono text-sm text-zinc-200 truncate pr-4">
                         irm https://hackctl.dev/install.ps1 | iex
@@ -133,9 +139,8 @@ export default function Home() {
                   >
                     <span className="text-[11px] uppercase tracking-wider text-zinc-500 font-semibold px-1">macOS / Linux</span>
                     <div 
-                      onClick={() => copyToClipboard("curl -fsSL https://hackctl.dev/install.sh | bash", 'mac')}
+                      onClick={() => copyToClipboard("curl -fsSL https://hackctl.dev/install.sh | bash", 'mac', 'Mac/Linux Download Click')}
                       className="w-full bg-[#27272a] border border-zinc-700/50 rounded-lg p-3 flex items-center justify-between cursor-pointer group/code hover:bg-zinc-800 transition-colors"
-                      data-umami-event="Mac/Linux Download Click"
                     >
                       <code className="font-mono text-sm text-zinc-200 truncate pr-4">
                         curl -fsSL https://hackctl.dev/install.sh | bash
