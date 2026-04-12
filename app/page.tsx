@@ -133,12 +133,12 @@ export default function Home() {
                   >
                     <span className="text-[11px] uppercase tracking-wider text-zinc-500 font-semibold px-1">macOS / Linux</span>
                     <div 
-                      onClick={() => copyToClipboard("curl -sL https://hackctl.dev/install.sh | bash", 'mac')}
+                      onClick={() => copyToClipboard("curl -fsSL https://hackctl.dev/install.sh | bash", 'mac')}
                       className="w-full bg-[#27272a] border border-zinc-700/50 rounded-lg p-3 flex items-center justify-between cursor-pointer group/code hover:bg-zinc-800 transition-colors"
                       data-umami-event="Mac/Linux Download Click"
                     >
                       <code className="font-mono text-sm text-zinc-200 truncate pr-4">
-                        curl -sL https://hackctl.dev/install.sh | bash
+                        curl -fsSL https://hackctl.dev/install.sh | bash
                       </code>
                       <button
                         className="flex shrink-0 items-center justify-center text-zinc-400 group-hover/code:text-zinc-100 transition-all"

@@ -30,11 +30,11 @@ export default function RootLayout({
     >
       <head>
         <Script
-          defer
           src="https://cloud.umami.is/script.js"
+          strategy="afterInteractive"
           data-website-id="7b96a762-1490-4cc5-97e3-19ff7c628dbd"
+          data-domains="hackctl.dev"
           data-performance="true"
-          data-host-url="https://hackctl.dev"
         />
       </head>
       <body className="min-h-full flex flex-col">{children}</body>
