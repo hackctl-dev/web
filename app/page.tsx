@@ -110,6 +110,7 @@ export default function Home() {
                     <div 
                       onClick={() => copyToClipboard("irm https://hackctl.dev/install.ps1 | iex", 'win')}
                       className="w-full bg-[#27272a] border border-zinc-700/50 rounded-lg p-3 flex items-center justify-between cursor-pointer group/code hover:bg-zinc-800 transition-colors"
+                      data-umami-event="Windows Download Click"
                     >
                       <code className="font-mono text-sm text-zinc-200 truncate pr-4">
                         irm https://hackctl.dev/install.ps1 | iex
@@ -134,6 +135,7 @@ export default function Home() {
                     <div 
                       onClick={() => copyToClipboard("curl -sL https://hackctl.dev/install.sh | bash", 'mac')}
                       className="w-full bg-[#27272a] border border-zinc-700/50 rounded-lg p-3 flex items-center justify-between cursor-pointer group/code hover:bg-zinc-800 transition-colors"
+                      data-umami-event="Mac/Linux Download Click"
                     >
                       <code className="font-mono text-sm text-zinc-200 truncate pr-4">
                         curl -sL https://hackctl.dev/install.sh | bash
