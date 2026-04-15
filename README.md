@@ -2,11 +2,41 @@
 
 This repo contains the public `hackctl.dev` website.
 
+## Install Scripts
+
+The site hosts the official installers used to fetch the latest CLI release from `hackctl-dev/cli`.
+
+Supported release platforms:
+
+- Windows x64
+- macOS Intel
+- macOS Apple Silicon
+- Linux x64
+- Linux ARM64
+
+Windows x64:
+
+```powershell
+irm https://hackctl.dev/install.ps1 | iex
+```
+
+macOS Intel and Apple Silicon:
+
+```bash
+curl -fsSL https://hackctl.dev/install.sh | sh
+```
+
+Linux x64 and ARM64:
+
+```bash
+curl -fsSL https://hackctl.dev/install.sh | sh
+```
+
 ## Current Scope
 
 Today the site is a focused landing page for the CLI with:
 
-- install commands for Windows and macOS or Linux
+- install commands for all currently shipped CLI platforms
 - the three-command workflow: `create`, `start`, `share`
 - hosted installer scripts in `public/install.sh` and `public/install.ps1`
 
