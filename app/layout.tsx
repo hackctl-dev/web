@@ -1,34 +1,43 @@
-import type { Metadata } from "next";
-import { Geist, Lilex } from "next/font/google";
-import Script from "next/script";
-import "./globals.css";
+import type { Metadata } from 'next'
+import Script from 'next/script'
+import { Geist, Geist_Mono } from 'next/font/google'
+import { Analytics } from '@vercel/analytics/next'
+import './globals.css'
 
-const geistSans = Geist({
-  variable: "--font-geist-sans",
-  subsets: ["latin"],
-});
-
-const lilex = Lilex({
-  variable: "--font-lilex",
-  subsets: ["latin"],
-});
+const _geist = Geist({ subsets: ["latin"] });
+const _geistMono = Geist_Mono({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
-  title: "Hackctl | Launch hackathon projects faster.",
-  description: "Hackctl | Launch hackathon projects faster.",
-};
+  title: 'hackctl - Ship faster at hackathons',
+  description: 'Scaffold, run, and share hackathon apps in three commands. hackctl is a CLI for hackathon teams.',
+  generator: 'v0.app',
+  icons: {
+    icon: [
+      {
+        url: '/icon-light-32x32.png',
+        media: '(prefers-color-scheme: light)',
+      },
+      {
+        url: '/icon-dark-32x32.png',
+        media: '(prefers-color-scheme: dark)',
+      },
+      {
+        url: '/icon.svg',
+        type: 'image/svg+xml',
+      },
+    ],
+    apple: '/apple-icon.png',
+  },
+}
 
 export default function RootLayout({
   children,
 }: Readonly<{
-  children: React.ReactNode;
+  children: React.ReactNode
 }>) {
   return (
-    <html
-      lang="en"
-      className={`${geistSans.variable} ${lilex.variable} h-full antialiased`}
-    >
-      <head>
+    <html lang="en" className="bg-background">
+      <body className="font-sans antialiased">
         <Script
           src="https://cloud.umami.is/script.js"
           strategy="afterInteractive"
@@ -36,8 +45,9 @@ export default function RootLayout({
           data-domains="hackctl.dev"
           data-performance="true"
         />
-      </head>
-      <body className="min-h-full flex flex-col">{children}</body>
+        {children}
+        {process.env.NODE_ENV === 'production' && <Analytics />}
+      </body>
     </html>
-  );
+  )
 }
