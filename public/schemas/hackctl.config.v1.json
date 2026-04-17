@@ -31,6 +31,9 @@
     },
     "share": {
       "$ref": "#/$defs/share"
+    },
+    "deploy": {
+      "$ref": "#/$defs/deploy"
     }
   },
   "$defs": {
@@ -79,6 +82,26 @@
           "type": "integer",
           "minimum": 0,
           "maximum": 65535
+        }
+      }
+    },
+    "deploy": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "runtime"
+      ],
+      "properties": {
+        "runtime": {
+          "type": "string",
+          "minLength": 1
+        },
+        "mode": {
+          "type": "string",
+          "enum": [
+            "dev",
+            "prod"
+          ]
         }
       }
     }
