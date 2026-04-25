@@ -1,6 +1,7 @@
 import Link from "next/link"
 import { InstallCommand } from "@/components/install-command"
 import { FadeIn } from "@/components/fade-in"
+import { ChevronDown, ChevronRight, Folder, FileText, File, Braces } from "lucide-react"
 
 export default function Home() {
   return (
@@ -46,28 +47,8 @@ export default function Home() {
         </div>
       </section>
 
-      {/* TICKER */}
-      <div className="ticker-wrap">
-        <div className="ticker-track">
-          <span className="tick-item"><b>5</b> official templates</span>
-          <span className="tick-item">create · start · share · deploy · status · destroy</span>
-          <span className="tick-item">Cloudflare Quick Tunnel, <b>zero account needed</b></span>
-          <span className="tick-item">AGENTS.md · CLAUDE.md · GEMINI.md</span>
-          <span className="tick-item">SSH + PM2 deploy</span>
-          <span className="tick-item">macOS · Linux · Windows</span>
-          <span className="tick-item">MIT License · open source</span>
-          <span className="tick-item"><b>5</b> official templates</span>
-          <span className="tick-item">create · start · share · deploy · status · destroy</span>
-          <span className="tick-item">Cloudflare Quick Tunnel, <b>zero account needed</b></span>
-          <span className="tick-item">AGENTS.md · CLAUDE.md · GEMINI.md</span>
-          <span className="tick-item">SSH + PM2 deploy</span>
-          <span className="tick-item">macOS · Linux · Windows</span>
-          <span className="tick-item">MIT License · open source</span>
-        </div>
-      </div>
-
       {/* COMMANDS */}
-      <section className="sec" id="commands">
+      <section className="sec" id="commands" style={{ background: "var(--bg2)" }}>
         <div className="wrap">
           <div className="sec-label">how it works</div>
           <h2 className="sec-title">Three commands.<br /><em>Zero config debt.</em></h2>
@@ -110,10 +91,11 @@ export default function Home() {
       </section>
 
       {/* DEMO */}
-      <div className="demo-sec" id="demo">
+      <div className="demo-sec" id="demo" style={{ background: "var(--bg)" }}>
         <div className="wrap">
           <div className="sec-label">see it run</div>
           <h2 className="sec-title">From zero to live URL.<br /><em>Under two minutes.</em></h2>
+          <p className="sec-sub">Watch the complete flow from scaffolding a full-stack app to getting a live, shareable URL. No cuts, no fast-forwarding.</p>
           <FadeIn className="demo-terminal" threshold={0.5}>
             <div className="t-bar">
               <div className="t-dot r"></div><div className="t-dot y"></div><div className="t-dot g"></div>
@@ -144,58 +126,140 @@ export default function Home() {
       </div>
 
       {/* AI NATIVE */}
-      <section className="sec" id="ai">
+      <section className="sec" id="ai" style={{ background: "var(--bg2)" }}>
         <div className="wrap">
           <div className="sec-label">ai-native by design</div>
           <h2 className="sec-title">Your AI already<br /><em>knows the project.</em></h2>
-          <p className="sec-sub">Every template ships with agent instructions built in. Open Cursor or Claude Code and your AI has accurate, stack-specific context from the first prompt.</p>
-          <div className="ai-grid">
-            <div className="ai-files">
-              <FadeIn className="ai-file" threshold={0.2}>
-                <span className="af-icon">📄</span>
-                <span className="af-name">AGENTS.md</span>
-                <span className="af-tag">canonical</span>
-              </FadeIn>
-              <FadeIn className="ai-file" delay={0.1} threshold={0.2}>
-                <span className="af-icon">◆</span>
-                <span className="af-name">CLAUDE.md</span>
-                <span className="af-tag">claude code</span>
-              </FadeIn>
-              <FadeIn className="ai-file" delay={0.2} threshold={0.2}>
-                <span className="af-icon">◇</span>
-                <span className="af-name">GEMINI.md</span>
-                <span className="af-tag">gemini</span>
-              </FadeIn>
-              <FadeIn className="ai-file" delay={0.3} threshold={0.2}>
-                <span className="af-icon">⊞</span>
-                <span className="af-name">.agents/skills/</span>
-                <span className="af-tag">skill packs</span>
-              </FadeIn>
-              <FadeIn className="ai-tools-row" delay={0.4} threshold={0.2}>
-                <span className="ai-tool">Claude Code</span>
-                <span className="ai-tool">Cursor</span>
-                <span className="ai-tool">Copilot</span>
-                <span className="ai-tool">Gemini</span>
-                <span className="ai-tool">Windsurf</span>
-              </FadeIn>
+          <p className="sec-sub">Every template ships with agent instructions built-in. Your AI gets accurate, stack-specific context from the very first prompt.</p>
+          
+          <div className="ide-mockup" style={{ marginTop: '48px', borderRadius: '12px', overflow: 'hidden', border: '1px solid var(--border)', background: 'var(--bg)', boxShadow: '0 20px 40px rgba(0,0,0,0.4)', position: 'relative', zIndex: 1 }}>
+            <div className="ide-header" style={{ display: 'flex', alignItems: 'center', padding: '12px 16px', borderBottom: '1px solid var(--border)', background: 'var(--bg)' }}>
+              <div className="ide-dots" style={{ display: 'flex', gap: '8px' }}>
+                <div style={{ width: '12px', height: '12px', borderRadius: '50%', background: '#ff5f56' }}></div>
+                <div style={{ width: '12px', height: '12px', borderRadius: '50%', background: '#ffbd2e' }}></div>
+                <div style={{ width: '12px', height: '12px', borderRadius: '50%', background: '#27c93f' }}></div>
+              </div>
+              <div className="ide-title" style={{ flex: 1, textAlign: 'center', fontSize: '13px', color: 'var(--muted)', fontFamily: 'var(--font-mono)' }}>hackctl - AGENTS.md</div>
             </div>
-            <div className="ai-right">
-              <div className="stat-block">
-                <div className="stat-context">setup time</div>
-                <div className="stat-num">0 <em>min</em></div>
-                <div className="stat-label">spent giving your AI context. hackctl generates it at scaffold time, specific to your project, real file paths, real env vars, real ports.</div>
+            <div className="ide-body" style={{ display: 'flex', height: '520px' }}>
+              <div className="ide-sidebar" style={{ width: '240px', borderRight: '1px solid var(--border)', padding: '16px 0', background: 'var(--bg)' }}>
+                <div style={{ fontSize: '11px', fontWeight: 'bold', color: 'var(--muted)', padding: '0 16px', marginBottom: '8px', letterSpacing: '1px' }}>EXPLORER</div>
+                <div className="ide-tree" style={{ fontSize: '13px', fontFamily: 'var(--font-mono)' }}>
+                  <div style={{ padding: '4px 16px', display: 'flex', alignItems: 'center', gap: '8px', cursor: 'default' }}>
+                    <span style={{ fontSize: '10px' }}><ChevronDown size={12} strokeWidth={3} /></span> <span>hackctl</span>
+                  </div>
+                  <div style={{ paddingLeft: '16px' }}>
+                    <div style={{ padding: '4px 16px', display: 'flex', alignItems: 'center', gap: '8px', cursor: 'default' }}>
+                      <span style={{ fontSize: '10px' }}><ChevronDown size={12} strokeWidth={3} /></span> <span>.agents/skills/</span>
+                    </div>
+                    <div style={{ paddingLeft: '16px' }}>
+                      <div style={{ padding: '4px 16px', display: 'flex', alignItems: 'center', gap: '8px', color: 'var(--muted)' }}>
+                        <span style={{ display: 'flex', alignItems: 'center' }}><Folder size={14} /></span> <span>find-skills</span>
+                      </div>
+                      <div style={{ padding: '4px 16px', display: 'flex', alignItems: 'center', gap: '8px', color: 'var(--muted)' }}>
+                        <span style={{ display: 'flex', alignItems: 'center' }}><Folder size={14} /></span> <span>setup-env</span>
+                      </div>
+                      <div style={{ padding: '4px 16px', display: 'flex', alignItems: 'center', gap: '8px', color: 'var(--muted)' }}>
+                        <span style={{ display: 'flex', alignItems: 'center' }}><Folder size={14} /></span> <span>deploy-app</span>
+                      </div>
+                    </div>
+                    <div style={{ padding: '4px 16px', display: 'flex', alignItems: 'center', gap: '8px', background: 'rgba(255,255,255,0.05)', color: 'var(--fg)' }}>
+                      <span style={{ display: 'flex', alignItems: 'center' }}><FileText size={14} /></span> <span>AGENTS.md</span>
+                    </div>
+                    <div style={{ padding: '4px 16px', display: 'flex', alignItems: 'center', gap: '8px', color: 'var(--muted)' }}>
+                      <span style={{ display: 'flex', alignItems: 'center' }}><File size={14} /></span> <span>CLAUDE.md</span>
+                    </div>
+                    <div style={{ padding: '4px 16px', display: 'flex', alignItems: 'center', gap: '8px', color: 'var(--muted)' }}>
+                      <span style={{ display: 'flex', alignItems: 'center' }}><File size={14} /></span> <span>GEMINI.md</span>
+                    </div>
+                    <div style={{ padding: '4px 16px', display: 'flex', alignItems: 'center', gap: '8px', color: 'var(--muted)' }}>
+                      <span style={{ display: 'flex', alignItems: 'center' }}><Braces size={14} /></span> <span>package.json</span>
+                    </div>
+                  </div>
+                </div>
               </div>
-              <div className="stat-block">
-                <div className="stat-context">compatibility</div>
-                <div className="stat-num">6+ <em>tools</em></div>
-                <div className="stat-label">AI coding tools supported out of the box. One AGENTS.md as the canonical source. CLAUDE.md and GEMINI.md act as lightweight pointers.</div>
-              </div>
-              <div className="stat-block">
-                <div className="stat-context">standard</div>
-                <div className="stat-num"><em>open</em></div>
-                <div className="stat-label">agentskills.io, originated by Anthropic, adopted across the industry. Standardized capabilities that work everywhere.</div>
+              <div className="ide-editor" style={{ flex: 1, display: 'flex', flexDirection: 'column', background: 'var(--bg2)' }}>
+                <div className="ide-tabs" style={{ display: 'flex', borderBottom: '1px solid var(--border)', background: 'var(--bg)' }}>
+                  <div className="ide-tab" style={{ padding: '8px 16px', fontSize: '13px', fontFamily: 'var(--font-mono)', borderRight: '1px solid var(--border)', borderTop: '2px solid #a8b4ff', background: 'var(--bg2)', color: 'var(--fg)' }}>AGENTS.md</div>
+                </div>
+                <div className="ide-content" style={{ padding: '24px', flex: 1, overflow: 'hidden', fontSize: '14px', fontFamily: 'var(--font-mono)', lineHeight: '1.6', color: 'var(--muted)' }}>
+                  <pre style={{ margin: 0 }}>
+                    <code style={{ color: 'var(--fg)' }}># AGENTS.md</code><br/><br/>
+                    Guidance for AI coding agents working in the `hackctl` workspace.<br/><br/>
+                    <code style={{ color: 'var(--fg)' }}>## Scope</code><br/><br/>
+                    This workspace is a polyrepo. Treat these as separate repositories:<br/>
+                    - `cli/` - Go CLI<br/>
+                    - `web/` - Next.js marketing and installer site<br/>
+                    - `templates/` - official scaffold templates<br/><br/>
+                    <code style={{ color: 'var(--fg)' }}>## Working Rules</code><br/><br/>
+                    - Identify the target repo before editing.<br/>
+                    - Read the repo-local `AGENTS.md` before making changes.
+                  </pre>
+                </div>
               </div>
             </div>
+          </div>
+
+          <div className="ai-logos" style={{ display: "flex", justifyContent: "center", gap: "16px", marginTop: "40px", flexWrap: "wrap", alignItems: 'center' }}>
+            <div className="ai-logo-chip" style={{ display: 'flex', alignItems: 'center', gap: '8px', padding: '8px 16px', background: 'var(--bg)', border: '1px solid var(--border)', borderRadius: '999px', position: 'relative', zIndex: 1 }}>
+              <img src="https://svgl.app/library/claude-ai-icon.svg" alt="Claude" style={{ width: '20px', height: '20px', filter: 'brightness(0) invert(1)' }} />
+              <span style={{ fontSize: '13px', color: 'var(--fg)' }}>Claude</span>
+            </div>
+            <div className="ai-logo-chip" style={{ display: 'flex', alignItems: 'center', gap: '8px', padding: '8px 16px', background: 'var(--bg)', border: '1px solid var(--border)', borderRadius: '999px', position: 'relative', zIndex: 1 }}>
+              <img src="https://svgl.app/library/cursor_dark.svg" alt="Cursor" style={{ width: '20px', height: '20px', filter: 'brightness(0) invert(1)' }} />
+              <span style={{ fontSize: '13px', color: 'var(--fg)' }}>Cursor</span>
+            </div>
+            <div className="ai-logo-chip" style={{ display: 'flex', alignItems: 'center', gap: '8px', padding: '8px 16px', background: 'var(--bg)', border: '1px solid var(--border)', borderRadius: '999px', position: 'relative', zIndex: 1 }}>
+              <img src="https://svgl.app/library/copilot_dark.svg" alt="Copilot" style={{ width: '20px', height: '20px', filter: 'brightness(0) invert(1)' }} />
+              <span style={{ fontSize: '13px', color: 'var(--fg)' }}>Copilot</span>
+            </div>
+            <div className="ai-logo-chip" style={{ display: 'flex', alignItems: 'center', gap: '8px', padding: '8px 16px', background: 'var(--bg)', border: '1px solid var(--border)', borderRadius: '999px', position: 'relative', zIndex: 1 }}>
+              <img src="https://svgl.app/library/antigravity.svg" alt="Antigravity" style={{ width: '20px', height: '20px', filter: 'brightness(0) invert(1)' }} />
+              <span style={{ fontSize: '13px', color: 'var(--fg)' }}>Antigravity</span>
+            </div>
+            <div className="ai-logo-chip" style={{ display: 'flex', alignItems: 'center', gap: '8px', padding: '8px 16px', background: 'var(--bg)', border: '1px solid var(--border)', borderRadius: '999px', position: 'relative', zIndex: 1 }}>
+              <img src="https://svgl.app/library/windsurf-dark.svg" alt="Windsurf" style={{ width: '20px', height: '20px', filter: 'brightness(0) invert(1)' }} />
+              <span style={{ fontSize: '13px', color: 'var(--fg)' }}>Windsurf</span>
+            </div>
+            <div className="ai-logo-chip" style={{ display: 'flex', alignItems: 'center', gap: '8px', padding: '8px 16px', background: 'var(--bg)', border: '1px solid var(--border)', borderRadius: '999px', position: 'relative', zIndex: 1 }}>
+              <img src="https://svgl.app/library/opencode-dark.svg" alt="OpenCode" style={{ width: '20px', height: '20px' }} />
+              <span style={{ fontSize: '13px', color: 'var(--fg)' }}>OpenCode</span>
+            </div>
+            <div className="ai-logo-chip" style={{ display: 'flex', alignItems: 'center', gap: '8px', padding: '8px 16px', background: 'var(--bg)', border: '1px solid var(--border)', borderRadius: '999px', position: 'relative', zIndex: 1 }}>
+              <img src="https://svgl.app/library/vscode.svg" alt="VS Code" style={{ width: '20px', height: '20px', filter: 'brightness(0) invert(1)' }} />
+              <span style={{ fontSize: '13px', color: 'var(--fg)' }}>VS Code</span>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* DEPLOY */}
+      <section className="sec" id="deploy" style={{ background: "var(--bg)" }}>
+        <div className="wrap">
+          <div className="sec-label">deployment</div>
+          <h2 className="sec-title">From local preview<br /><em>to production.</em></h2>
+          <p className="sec-sub">Share directly from your laptop for fast iteration, or securely deploy to your VPS when it&apos;s time. Zero vendor lock-in.</p>
+          <div className="deploy-grid">
+            <FadeIn className="deploy-card">
+              <div className="dc-label">local · fast demos</div>
+              <div className="dc-title">Share from your laptop</div>
+              <div className="dc-desc">Cloudflare Quick Tunnel exposes your local app publicly. Zero accounts required. Live URL in seconds from any network.</div>
+              <div className="dc-term">
+                <span className="tl"><span className="tp">→</span> <span className="tc">hackctl share</span></span>
+                <span className="tl" style={{ color: "#6ee7b7" }}>  ✓ tunnel established</span>
+                <span className="tl" style={{ color: "#a8b4ff" }}>  https://demo.trycloudflare.com</span>
+              </div>
+            </FadeIn>
+            <FadeIn className="deploy-card" delay={0.1}>
+              <div className="dc-label">vps · full control</div>
+              <div className="dc-title">Deploy to your server</div>
+              <div className="dc-desc">SSH/SCP + PM2 + persistent Cloudflare Tunnel. Provisions runtime, uploads files, starts services. Saves deploy state locally.</div>
+              <div className="dc-term">
+                <span className="tl"><span className="tp">→</span> <span className="tc">hackctl deploy \</span></span>
+                <span className="tl"><span className="tc">  --target 1.2.3.4 --key ~/.ssh/id_rsa</span></span>
+                <span className="tl" style={{ color: "#6ee7b7" }}>  ✓ deployed · pm2 running</span>
+              </div>
+            </FadeIn>
           </div>
         </div>
       </section>
@@ -256,44 +320,13 @@ export default function Home() {
         </div>
       </section>
 
-      {/* DEPLOY */}
-      <section className="sec" id="deploy">
-        <div className="wrap">
-          <div className="sec-label">deployment</div>
-          <h2 className="sec-title">From local preview<br /><em>to production.</em></h2>
-          <p className="sec-sub">Share directly from your laptop for fast iteration, or securely SSH deploy to your own VPS when it&apos;s time to go live. No vendor lock-in.</p>
-          <div className="deploy-grid">
-            <FadeIn className="deploy-card">
-              <div className="dc-label">local · fast demos</div>
-              <div className="dc-title">Share from your laptop</div>
-              <div className="dc-desc">Cloudflare Quick Tunnel exposes your local app publicly. Zero accounts required. Live URL in seconds from any network.</div>
-              <div className="dc-term">
-                <span className="tl"><span className="tp">→</span> <span className="tc">hackctl share</span></span>
-                <span className="tl" style={{ color: "#6ee7b7" }}>  ✓ tunnel established</span>
-                <span className="tl" style={{ color: "#a8b4ff" }}>  https://demo.trycloudflare.com</span>
-              </div>
-            </FadeIn>
-            <FadeIn className="deploy-card" delay={0.1}>
-              <div className="dc-label">vps · full control</div>
-              <div className="dc-title">Deploy to your server</div>
-              <div className="dc-desc">SSH/SCP + PM2 + persistent Cloudflare Tunnel. Provisions runtime, uploads files, starts services. Saves deploy state locally.</div>
-              <div className="dc-term">
-                <span className="tl"><span className="tp">→</span> <span className="tc">hackctl deploy \</span></span>
-                <span className="tl"><span className="tc">  --target 1.2.3.4 --key ~/.ssh/id_rsa</span></span>
-                <span className="tl" style={{ color: "#6ee7b7" }}>  ✓ deployed · pm2 running</span>
-              </div>
-            </FadeIn>
-          </div>
-        </div>
-      </section>
-
       {/* CTA */}
       <div className="cta-sec">
         <div className="grid-bg"></div>
         <div className="cta-inner">
           <h2>Your next hackathon <em>starts here.</em></h2>
           <p>Three commands. Live URL. Ship something real.</p>
-          <div className="cta-install" style={{ background: 'transparent', border: 'none', padding: 0, boxShadow: 'none' }}>
+          <div className="cta-install" style={{ padding: 0, boxShadow: 'none' }}>
             <InstallCommand text="curl -fsSL https://get.hackctl.dev | sh" />
           </div>
           <div className="cta-links">
